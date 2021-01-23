@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Login from "./pages/Login/login.component";
+import Dashboard from "./pages/Dashboard/dashboard.component";
+import MainMenu from "./components/main-menu.component";
+import ErrorBoundary from "./errorBoundary.component";
+import PrivateRoute from "./hocs/private-route.hoc";
+
+import "./index.css";
+import "./App.css";
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      buggyProperty: undefined,
+      simpleText: "simpleText",
+    };
+  }
+
+  onChange = (e) => {
+    this.setState({ simpleText: e.target.value });
+  };
+
+  render() {
+    return (
+      <>
+        <ErrorBoundary>
+          <MainMenu className="ph7" />
+          <Switch>
+            <Route path="/login" component={Login} />
+            <PrivateRoute path="/dashboard" component={Dashboard} />
+          </Switch>
+        </ErrorBoundary>
+      </>
+    );
+  }
 }
 
 export default App;
