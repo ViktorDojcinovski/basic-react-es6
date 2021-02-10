@@ -90,7 +90,7 @@ let addNumber = function (a, ...args) {
   });
 };
 
-let arr2 = addNumber(2, 3, 4);
+let arr2 = addNumber(2, 3, 4, 5, 6);
 
 //console.log(arr2); // --> [5, 6]
 
@@ -127,3 +127,11 @@ function tagging(strings, tag) {
 let message = tagging`This is a ${tag} template expression`;
 
 console.log(message);
+
+// [1, 2, 3, 4, 5] --> call the map method on the array and log the output
+let newArray = [1, 2, 3, 4, 5];
+
+// write algoritam that will return [2, 3, 4, 5, 6]
+newArray.map(() => {});
+// write algoritam that will return [1, 2, 3]
+newArray.filter(() => {});
