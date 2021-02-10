@@ -25,19 +25,22 @@ window.prop = "global lexical scope";
 
 class Ob {
   constructor() {
-    this.prop = "local lexical scope";
+    this.prop = "prop";
   }
 
-  normalFunction = function () {
-    return this.prop;
-  };
+  normalFunc() {
+    console.log(this.prop);
+  }
 
-  arrowFunction = () => {
-    return this.prop;
+  arrowFunc = () => {
+    console.log(this.prop);
   };
 }
 
+// instantiation
 let ob = new Ob();
+
+console.log(ob.prop);
 
 console.log(ob.normalFunction());
 console.log(ob.arrowFunction());
@@ -53,13 +56,20 @@ let obj = {
   a: 1,
   b: 2,
   c: 3,
+  d: 1,
+  f: 2,
+  g: 3,
 };
 
+// let a = obj.a;
+// let b = obj.b;
 let { a, b } = obj;
 
 // Example 2 -- array destructuring
 let arr = [1, 2, 3];
 
+// let one = arr[0];
+// let two = arr[1];
 let [one, two] = arr;
 
 // console.log(one, two);
@@ -86,7 +96,7 @@ let arr2 = addNumber(2, 3, 4);
 
 // Example 2 -- spread operator
 let arr3 = [1, 2, 3];
-
+// Math.max([1, 2, 3]) ???
 Math.max(...arr3);
 
 /**
@@ -95,6 +105,8 @@ Math.max(...arr3);
 
 // Example 1 -- string literal
 let number = 100;
+
+// 'The message is ' + number
 
 let message = `The number is ${number}`;
 
